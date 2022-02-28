@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 
-const apiBaseUrl = "http://localhost:8080/back-test/rest"
+const apiBaseUrl = "http://localhost:8080"
 
 @Injectable({
   providedIn: 'root'
@@ -15,27 +15,22 @@ export class ApiService {
 
   //todas las peliculas
   getAllMovies(): Observable<any>{
-    return this.apliClient.get(apiBaseUrl+'/movies');
+    return this.apliClient.get(apiBaseUrl+'/movie');
   }
 
-  //pelicula por id
-  readMovie(movieId: any): Observable<any>{
-    return this.apliClient.get(`${apiBaseUrl}/movies/${movieId}`);
-  }
-
-  //crear pelicula
+   //crear pelicula
   createMovie(movie: any): Observable<any>{
-    return this.apliClient.post(apiBaseUrl+"/movies", movie);
+    return this.apliClient.post(apiBaseUrl+"/movie", movie);
   }
 
   //actualizar pelicula
   updateMovie(movieId: any, updateData: any): Observable<any>{
-    return this.apliClient.patch(`${apiBaseUrl}/movies/${movieId}`, updateData);
+    return this.apliClient.put(apiBaseUrl+'/movie', updateData);
   }
 
   //borrar pelicula
   removeMovie(movieId: any): Observable<any>{
-    return this.apliClient.delete(`${apiBaseUrl}/movies/${movieId}`);
+    return this.apliClient.delete(`${apiBaseUrl}/movie/${movieId}`);
   }
 
 }
