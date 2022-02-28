@@ -17,7 +17,7 @@ export class MovieComponent implements OnInit {
     this.movieRegistrationForm = this.formBuilder.group({
       title: '',
       year: '',
-      duration: ''
+      watched: false
     })
   }
 
@@ -35,21 +35,28 @@ export class MovieComponent implements OnInit {
     })
   }
 
-  onSubmit(movieData: { title: any; year: any; duration: any; }){
+  onSubmit(movieData: { title: any; year: any; watched: any; }){
     this.movieRegistrationForm.reset();
     const movie_register_data = {
       title: movieData.title,
       year: movieData.year,
-      duration: movieData.duration
+      watched: movieData.watched
     };
     console.log("movie registration successfully", movieData);
     this.apiService.createMovie(movie_register_data).subscribe(response =>{
         console.log("movie creation successfull"+response.id);
+        this.getMovies();
         },
       error => {
         console.log("Error in movie registration")
       });
+  }
 
+  deleteMovie(movieId: any){
+    this.apiService.removeMovie(movieId).subscribe(response =>{
+      console.log("Movie deletion success"+response);
+      this.getMovies();
+    })
   }
 
 }
