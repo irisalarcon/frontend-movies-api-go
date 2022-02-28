@@ -18,6 +18,11 @@ export class ApiService {
     return this.apliClient.get(apiBaseUrl+'/movie');
   }
 
+  //leer pelicula por id
+  readMovie(movieId: any): Observable<any>{
+    return this.apliClient.get(`${apiBaseUrl}/movie/${movieId}`);
+  }
+
    //crear pelicula
   createMovie(movie: any): Observable<any>{
     return this.apliClient.post(apiBaseUrl+"/movie", movie);

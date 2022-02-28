@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 
+
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -11,6 +12,7 @@ export class MovieComponent implements OnInit {
 
   movieRegistrationForm;
   movies: any;
+  movieId: any;
 
   constructor( private formBuilder: FormBuilder,
                private apiService: ApiService) {
@@ -23,6 +25,7 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
+
   }
 
   getMovies(){
@@ -59,4 +62,4 @@ export class MovieComponent implements OnInit {
     })
   }
 
-}
+ }

@@ -42,7 +42,6 @@
       <th scope="col">Year</th>
       <th scope="col">Watched</th>
       <th scope="col">Delete</th>
-      <th scope="col">Update</th>
     </tr>
     </thead>
     <tbody>
@@ -52,7 +51,6 @@
       <td>{{movie.year}}</td>
       <td>{{ movie.watched }}</td>
       <td><button type="button" class="btn btn-danger" (click)="deleteMovie(movie._id)">Delete</button></td>
-      <td><input class="form-check-input" type="checkbox"  id="flexCheckDefault"></td>
     </tr>
     </tbody>
   </table>
